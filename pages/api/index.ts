@@ -29,6 +29,7 @@ const api = async (req: NextApiRequest, res: NextApiResponse<object>) => {
       res.write('Data not found!');
       break;
   }
+  res.end();
 };
 
 export default api;
