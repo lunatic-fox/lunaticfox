@@ -1,6 +1,6 @@
 const apiKeys = Object.freeze({
   MAIN_CARDS: 'mainCards',
-  GITHUB_COLORS_TRANSLATION: 'githubColorsTranslation'
+  GITHUB_LANGUAGES_TRANSLATION: 'githubLanguagesTranslation'
 });
 
 export default apiKeys;

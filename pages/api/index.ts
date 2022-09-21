@@ -20,8 +20,8 @@ const api = async (req: NextApiRequest, res: NextApiResponse<object>) => {
       res.status(200).json(YAML.parse(data));
       break;
         
-    case apiKeys.GITHUB_COLORS_TRANSLATION:
-      data = await fs.readFile(`${dataDir}/${apiKeys.GITHUB_COLORS_TRANSLATION}.yml`, 'utf8');
+    case apiKeys.GITHUB_LANGUAGES_TRANSLATION:
+      data = await fs.readFile(`${dataDir}/${apiKeys.GITHUB_LANGUAGES_TRANSLATION}.yml`, 'utf8');
       res.status(200).json(YAML.parse(data));
       break;
   

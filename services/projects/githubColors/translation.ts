@@ -31,7 +31,7 @@ type TranslationObj = {
 export type Translation =  Omit<TranslationSrc, 'type'> & {type: {[k: string]: string }};
 
 const translation = async (win: Window) => {
-  const res = await (await axios.get(apiReqs(apiKeys.GITHUB_COLORS_TRANSLATION))).data as TranslationObj;
+  const res = await (await axios.get(apiReqs(apiKeys.GITHUB_LANGUAGES_TRANSLATION))).data as TranslationObj;
   const iNav = win.navigator.language;
   if (iNav === 'pt' || iNav === 'pt-BR') 
     return res.ptbr as Translation;
