@@ -1,3 +1,3 @@
-# Work in progress!
+# Personal site with Next.js and TypeScript
 
-&nbsp;Page done, everything running as no tomorrow on my side, but API still not working properly when deployed. Wish me luck!
+# &gt; [lunaticfox.vercel.app](https://lunaticfox.vercel.app/)
