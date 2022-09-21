@@ -1,0 +1,29 @@
+# author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+# copyright: Josélio Júnior (Lunatic Fox) - 2022
+# license: MIT
+
+en:
+  numberOfLanguages: Number of languages
+  languagesWithColor: Languages with color
+  sourceFile: Source file from GitHub
+  myGithub: My GitHub
+  typeString: type
+  type:
+    programming: programming
+    data: data
+    prose: prose
+  colors: Colors
+  extensions: Extensions
+
+ptbr:
+  numberOfLanguages: Número de linguagens
+  languagesWithColor: Linguagens com cor
+  sourceFile: Arquivo fonte do GitHub
+  myGithub: Meu GitHub
+  typeString: tipo
+  type:
+    programming: programação
+    data: dados
+    prose: prosa
+  colors: Cores
+  extensions: Extensões

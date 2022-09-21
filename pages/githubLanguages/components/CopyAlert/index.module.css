@@ -1,0 +1,53 @@
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  opacity: 0;
+}
+
+.on {
+  width: 100%;
+  height: 100%;
+  font-size: 2em;
+  background: var(--bg1);
+  backdrop-filter: blur(5px);
+  animation: copyAlert .8s ease-in-out 0s 1 normal forwards;
+}
+
+@keyframes copyAlert {
+  10%, 90%, 99% {
+    width: 100%;
+    height: 100%;
+  }
+  10%, 90% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    width: 0;
+    height: 0;
+  }
+}
+
+.on span {
+  background: rgb(0, 150, 0);
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 5px;
+}

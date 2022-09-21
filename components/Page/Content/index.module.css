@@ -1,0 +1,15 @@
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  margin-top: -1px;
+  min-height: calc(100vh - 91px);
+}

@@ -1,0 +1,89 @@
+# author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+# copyright: Josélio Júnior (Lunatic Fox) - 2022
+# license: MIT
+
+# Kolorz
+- i: en
+  link: https://www.npmjs.com/package/kolorz
+  title: Kolorz
+  subtitle: >
+    A Node.js library to convert colors into different color systems.
+    Supports: hexadecimal, RGB, HSL, hexadecimal-alpha, RGBA, HSLA and
+    adjustings of alpha, hue, saturation and lightness.
+  langs:
+    - javascript
+    - typescript
+
+- i: ptbr
+  link: https://www.npmjs.com/package/kolorz
+  title: Kolorz
+  subtitle: >
+    Uma biblioteca Node.js para converter cores em diferentes sistemas de cor.
+    Suporta: hexadecimal, RGB, HSL, hexadecimal-alfa, RGBA, HSLA e
+    adjustes de alfa, matiz, saturação and luminosidade.
+  langs:
+    - javascript
+    - typescript
+
+# GitHub Languages
+- i: en
+  link: /githubLanguages
+  title: GitHub Languages
+  subtitle: A web project to present all languages known to GitHub. Here you can see the type, the color in hexadecimal, RGB and HSL, and the language extensions.
+  langs:
+    - javascript
+    - html
+    - css
+    - yaml
+
+- i: ptbr
+  link: /githubLanguages
+  title: Linguagens GitHub
+  subtitle: Um projeto web para apresentar todas as linguagens conhecidas pelo GitHub. Aqui você pode ver o tipo, a cor em hexadecimal, RGB e HSL, e as extensões da linguagem.
+  langs:
+    - javascript
+    - html
+    - css
+    - yaml
+
+# GitHub Tags
+- i: en
+  link: https://gh-tags.vercel.app/
+  title: GitHub Tags
+  subtitle: >
+    A API to generate a SVG tag with the language name
+    accordingly to the GitHub known language.
+  langs:
+    - html
+    - css
+    - javascript
+    - yaml
+    - svg
+
+- i: ptbr
+  link: https://gh-tags.vercel.app/
+  title: GitHub Tags
+  subtitle: >
+    Uma API para gerar uma tag SVG com o nome da linguagem
+    de acordo com a cor conhecida pelo GitHub.
+  langs:
+    - html
+    - css
+    - javascript
+    - yaml
+    - svg
+
+# Lua Extensions
+- i: en
+  link: https://github.com/lunatic-fox/lua-extensions
+  title: Lua Extensions
+  subtitle: Some extensions based on JavaScript made to Lua language.
+  langs:
+    - lua
+
+- i: ptbr
+  link: https://github.com/lunatic-fox/lua-extensions
+  title: Extensões Lua
+  subtitle: Algumas extensões baseadas em JavaScript feitas para a linguagem Lua.
+  langs:
+    - lua

@@ -1,0 +1,22 @@
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.footer {
+  margin: 0;
+  flex-direction: row;
+  align-items: flex-end;
+  padding: 5px 0;
+  border-radius: 8px 8px 0 0;
+  height: 20px;
+  opacity: 0;
+  animation: delay 0s ease-in 1s 1 normal forwards;
+}
+
+@keyframes delay {
+  to {
+    opacity: 1;
+  }
+}

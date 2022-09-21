@@ -1,0 +1,21 @@
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.default {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  padding: 10px;
+  margin: 5px;
+  color: var(--fg1);
+  box-shadow:
+    inset var(--boxShadowGlow) 2px 2px 5px,
+    inset var(--boxShadowShade) -2px -2px 5px,
+    var(--boxShadowShade) 3px 3px 4px;
+  border-radius: 8px;
+  transition: var(--trs);
+}

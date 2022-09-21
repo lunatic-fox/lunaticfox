@@ -1,0 +1,71 @@
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.wrapper {
+  display: flex;
+  height: 100%;
+  width: calc(100vmin - 10px);
+  max-width: 400px;
+}
+
+.addHighBox {
+  background: var(--bg1);
+  width: 100%;
+}
+
+.title {
+  font-size: 1.2em;
+  font-weight: 800;
+}
+
+.subtitle {
+  padding: 8px;
+  margin: 4px 0;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.title::selection, .subtitle::selection {
+  color: var(--selectionGlow);
+  text-shadow: 0 0 3px var(--selection);
+}
+
+.langsBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 25px;
+  margin-right: 40px;
+  flex-wrap: wrap;
+}
+
+.linkBtnBox {
+  transition: var(--trs);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 60px;
+  height: 30px;
+  clip-path: path('M 80,0 21.576914,5.2497967 c -6.1648,0.3353288 -9.632571,2.6826309 -10.788457,6.7065773 L 0,40 h 80 z');
+  border-bottom-right-radius: 8px;
+  padding-top: 4px;
+  background: #085cda;
+  box-shadow: inset #0b0daa 10px 10px 25px;
+  cursor: pointer;
+}
+
+.linkBtnBox:hover {
+  background: #36b5ff;
+  box-shadow: inset #6effe7 10px 10px 25px;
+}
+
+.linkBtnSymbol {
+  margin: 8px 0 0 30px;
+  width: 30px;
+  height: 30px;
+  clip-path: path('M 2.1631 0.0006 A 2.1137 2.1137 90 0 0 0 2.1134 v 11.6482 a 2.1137 2.1137 90 0 0 3.1702 1.8305 l 10.0877 -5.8243 a 2.1137 2.1137 90 0 0 0 -3.6606 L 3.1702 0.2831 A 2.1137 2.1137 90 0 0 2.1631 0.0006 Z');
+  background: #ffffff;
+}

@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('./themes.css');
+
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+:root {
+  --trs: ease all .5s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+  font-family: 'Nunito', sans-serif;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  color: var(--fg1);
+  background: var(--bg1);
+  transition: var(--trs);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: var(--bg1);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: solid 2px var(--bg1);
+  background: var(--fg1);
+}
+
+a {
+  color: var(--a);
+}
+
+a:hover {
+  color: var(--aHover)
+}

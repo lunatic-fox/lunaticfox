@@ -1,0 +1,49 @@
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.swBox,
+.swSRight,
+.swSLeft,
+.icon {
+  --squared: 28px;
+  transition: var(--trs);
+  border-radius: var(--squared);
+  cursor: pointer;
+}
+
+.swBox {
+  position: relative;
+  width: 45px;
+  height: 30px;
+  background: var(--bg2);
+  box-shadow: inset var(--boxShadowShade) 2px 2px 5px;
+}
+
+.swSRight,
+.swSLeft {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: var(--squared);
+  height: var(--squared);
+  box-shadow:
+    inset var(--boxShadowGlow) 2px 2px 5px,
+    inset var(--boxShadowShade) -2px -2px 5px,
+    var(--boxShadowShade) var(--switcherInnerShadowPosition);
+}
+
+.swSRight { transform: translateX(15px) }
+
+.swSLeft { transform: translateX(0px) }
+
+.icon {
+  position: absolute;
+  top: 3px;
+  width: 28px;
+  height: 28px;
+  clip-path: path('m16.3925 0-4.7515 2.5077v.8635c4.4734.0105 8.1126 3.6569 8.1126 8.1332s-3.6388 8.1217-8.1126 8.1332v.9054l.0139-.007 4.7749 2.4996 1.5919-5.1491 5.1439-1.6089-2.5153-4.7665 2.4996-4.7749-5.1491-1.5919zm-4.7728 3.3708c-4.4832 0-8.1335 3.6503-8.1335 8.1335s3.6503 8.1335 8.1335 8.1335v-1.4866c-3.6799 0-6.6469-2.9673-6.6469-6.6469s2.967-6.6469 6.6469-6.6469zm.0209 1.4866v13.2935c3.6702-.0105 6.626-2.9739 6.626-6.6469s-2.9558-6.6354-6.626-6.6469z');
+  background: var(--fg1);
+}

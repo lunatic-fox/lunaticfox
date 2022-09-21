@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@500&display=swap');
+
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;
+  animation: delay 0s ease-in 1s 1 normal forwards;
+}
+
+@keyframes delay {
+  to {
+    opacity: 1;
+  }
+}
+
+.wrapper *::selection {
+  color: var(--selectionGlow);
+  text-shadow: 0 0 3px var(--selection);
+}
+
+.wrapper,
+.langWrapper,
+.langWrapperOn,
+.lang,
+.langOn,
+.copySection,
+.copySectionOn,
+.copyBtnWrapper,
+.copyBtnWrapperOn,
+.copyBtnIcon,
+.copyBtnIconOn {
+  transition: var(--trs);
+}
+
+.innerInfo,
+.innerInfoOn {
+  transition: ease all .2s;
+}
+
+.langWrapper * {
+  font-family: 'Exo 2', sans-serif;
+}
+
+.langWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.cardInfoWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg1);
+  z-index: 1;
+  opacity: 0;
+  animation: cardOpened .3s ease-in-out 0s 1 normal forwards;
+
+  
+}
+
+@keyframes cardOpened {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 280px) {
+  .cardInfoWrapper {
+    align-items: flex-start;
+    overflow-y: scroll;
+  }
+}
+
+.cardInfoWrapperOff{
+  display: none;
+}
+
+.openedCard {
+  transition: none;
+}
+
+.openedCard,
+.lang {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  padding: 5px 10px 8px;
+  margin: 2px;
+  border-radius: 5px;
+  user-select: none;
+}
+
+.openedCard,
+.langOn {
+  width: fit-content;
+  padding: 5px 20px 8px;
+  margin: 20px;
+  max-width: 400px;
+}
+
+.copySection {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.copySectionOn {
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
+.copyBtnWrapper {
+  border-radius: 3px;
+  width: 0;
+  height: 0;
+  margin: 0;
+}
+
+.copyBtnWrapperOn {
+  width: 35px;
+  height: 35px;
+  margin: 5px -10px 0 15px;
+}
+
+.copyBtnIcon {
+  z-index: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  clip-path: path('M8.7306 3A1.3332 1.3186 90 007.4125 4.3327V8.1887H3.8934A1.3332 1.3186 90 002.5754 9.5214V25.4794A1.3332 1.3186 90 003.8934 26.8125H15.0815A1.3332 1.3186 90 0016.3999 25.4794V21.6239h3.5185A1.3332 1.3186 90 0021.2371 20.2908V4.3327A1.3332 1.3186 90 0019.9186 3ZM10.5564 5.1845H18.0933A.9618.9513 90 0119.0445 6.1461V18.4778A.9618.9513 90 0118.0933 19.4394H10.5564A.9618.9513 90 019.6052 18.4778V6.1461A.9618.9513 90 0110.5564 5.1845ZM5.7192 10.3732h1.6934v9.9176a1.3332 1.3186 90 001.3182 1.3331h5.4767V23.6664A.9618.9513 90 0113.2561 24.6281H5.7192A.9618.9513 90 014.7681 23.6664V11.3347A.9618.9513 90 015.7192 10.3732Z');
+  cursor: pointer;
+  opacity: 0;
+}
+
+.copyBtnIconOn {
+  width: 30px;
+  height: 30px;
+  margin: 2px -6px 0 0;
+  opacity: 1;
+}
+
+.innerInfo {
+  margin: 0;
+  font-size: 0;
+  text-align: left;
+}
+
+.innerInfoOn {
+  margin: 5px;
+  font-size: 1em; 
+}
