@@ -5,33 +5,30 @@
 *//**/
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import apiReqs from '../../services/apiReqs';
-import fs from 'fs';
+import path from 'path';
+import { promises as fs } from 'fs';
 import YAML from 'yaml';
+import apiKeys from '../../services/apiKeys';
 
-type Data = { name: string };
+const api = async (req: NextApiRequest, res: NextApiResponse<object>) => {
+  let data: string;
+  const dataDir = path.join(process.cwd(), 'data');
 
-const api = (
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) => {
-  let data: any = {};
   switch (req.query.data) {
-    case apiReqs.MAIN_CARDS:
-      data = YAML.parse(fs.readFileSync(`pages/data/${apiReqs.MAIN_CARDS}.yml`, 'utf8'));
-      res.json(data);
+    case apiKeys.MAIN_CARDS:
+      data = await fs.readFile(`${dataDir}/${apiKeys.MAIN_CARDS}.yml`, 'utf8');
+      res.status(200).json(YAML.parse(data));
       break;
-  
-    case apiReqs.GITHUB_COLORS_TRANSLATION:
-      data = YAML.parse(fs.readFileSync(`pages/data/${apiReqs.GITHUB_COLORS_TRANSLATION}.yml`, 'utf8'));
-      res.json(data);
+        
+    case apiKeys.GITHUB_COLORS_TRANSLATION:
+      data = await fs.readFile(`${dataDir}/${apiKeys.GITHUB_COLORS_TRANSLATION}.yml`, 'utf8');
+      res.status(200).json(YAML.parse(data));
       break;
   
     default:
-      res.write('No data found!');
+      res.write('Data not found!');
       break;
   }
-  res.end();
-}
+};
 
 export default api;

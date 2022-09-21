@@ -9,6 +9,7 @@ import apiReqs from '../../services/apiReqs';
 import { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import Card from '../Card';
+import apiKeys from '../../services/apiKeys';
 
 export type CardObject = {
   i: string;
@@ -22,7 +23,7 @@ const CardList = () => {
   const [cards, setCards] = useState([] as CardObject[]);
 
   useEffect(() => {
-    axios.get(apiReqs.requestURL(apiReqs.MAIN_CARDS))
+    axios.get(apiReqs(apiKeys.MAIN_CARDS))
       .then(({ data }) => setCards(data as CardObject[]));
   }, []);
 

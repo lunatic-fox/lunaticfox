@@ -4,10 +4,6 @@
  @license MIT
 *//**/
 
-const apiReqs = Object.freeze({
-  requestURL: (key: string) => `/api?data=${key}`,
-  MAIN_CARDS: 'mainCards',
-  GITHUB_COLORS_TRANSLATION: 'githubColorsTranslation'
-});
+const apiReqs = (key: string) => `/api?data=${key}`;
 
 export default apiReqs;
