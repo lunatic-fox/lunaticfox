@@ -82,7 +82,7 @@ const Card = ({ title, subtitle, langs, link }: CardProps) => {
           }
         </section>
         <Link href={ link }>
-          <a target={ '_blank' } className={ styles.linkBtnBox }>
+          <a className={ styles.linkBtnBox }>
             <div className={ styles.linkBtnSymbol } ></div>
           </a>
         </Link>
