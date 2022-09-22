@@ -9,6 +9,7 @@ import apiKeys from '../../apiKeys';
 import apiReqs from '../../apiReqs';
 
 type TranslationSrc = {
+  title: string;
   numberOfLanguages: string;
   languagesWithColor: string;
   sourceFile: string;

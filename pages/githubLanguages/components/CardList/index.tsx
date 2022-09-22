@@ -54,7 +54,6 @@ const CardList = () => {
       <section className={ styles.wrapper }>{ langsList }</section>
     </section>
   );
-
 };
 
 export default CardList;

@@ -15,10 +15,11 @@ type PageProps = {
     description: string;
     urlEndPoint?: string;
   },
+  pageTitle?: string;
   children: React.ReactNode
 };
 
-const Page = ({ metatags, children }: PageProps) => {
+const Page = ({ metatags, pageTitle, children }: PageProps) => {
 
   return (
     <>
@@ -40,6 +41,7 @@ const Page = ({ metatags, children }: PageProps) => {
       </Head>
       <Header/>
       <Content>
+        { pageTitle ? <h1 style={{fontWeight: 500, fontFamily: 'Fredoka One'}}>{ pageTitle }</h1> : ''}
         { children }
       </Content>
       <Footer/>

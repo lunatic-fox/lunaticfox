@@ -3,6 +3,7 @@
 # license: MIT
 
 en:
+  title: GitHub Languages
   numberOfLanguages: Number of languages
   languagesWithColor: Languages with color
   sourceFile: Source file from GitHub
@@ -16,6 +17,7 @@ en:
   extensions: Extensions
 
 ptbr:
+  title: Linguagens GitHub
   numberOfLanguages: Número de linguagens
   languagesWithColor: Linguagens com cor
   sourceFile: Arquivo fonte do GitHub
