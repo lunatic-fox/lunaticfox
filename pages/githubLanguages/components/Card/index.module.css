@@ -18,9 +18,7 @@
 }
 
 @keyframes delay {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1 }
 }
 
 .wrapper *::selection {
@@ -78,9 +76,7 @@
 }
 
 @keyframes cardOpened {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1 }
 }
 
 @media (max-width: 280px) {
@@ -90,13 +86,9 @@
   }
 }
 
-.cardInfoWrapperOff{
-  display: none;
-}
+.cardInfoWrapperOff{ display: none }
 
-.openedCard {
-  transition: none;
-}
+.openedCard { transition: none }
 
 .openedCard,
 .lang {

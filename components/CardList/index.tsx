@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import Card from '../Card';
 import apiKeys from '../../services/apiKeys';
+import Loading from '../Loading';
 
 export type CardObject = {
   i: string;
@@ -21,14 +22,24 @@ export type CardObject = {
 
 const CardList = () => {
   const [cards, setCards] = useState([] as CardObject[]);
+  const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
     axios.get(apiReqs(apiKeys.MAIN_CARDS))
-      .then(({ data }) => setCards(data as CardObject[]));
+      .then(({ data }) => {
+        setCards(data as CardObject[]);
+        if (data.length > 0) {
+          const interval = setTimeout(() => {
+            setTrigger(true);
+            clearInterval(interval);
+          }, .3e3);
+        }
+      });
   }, []);
 
   return (
     <section className={styles.wrapper}>
+      <Loading endTrigger={ trigger }/>
       {
         cards
         .filter(e => {

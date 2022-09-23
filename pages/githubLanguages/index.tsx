@@ -7,16 +7,10 @@
 import Page from '../../components/Page';
 import Loading from '../../components/Loading';
 import CardList from './components/CardList';
-import translation, { Translation } from '../../services/projects/githubColors/translation';
-import { useEffect, useState } from 'react';
+import { usePageTranslation } from '../../hooks/githubLanguages';
 
 const DPage = () => {
-  const [t, setT] = useState({} as Translation);
-  
-  useEffect(() => {
-    translation(window).then((e) => setT(e));
-  }, []);
-
+  const t = usePageTranslation();
   return (
     <Page 
       metatags={{
@@ -25,7 +19,7 @@ const DPage = () => {
         urlEndPoint: 'githubLanguages'
       }}
       pageTitle={ t.title }>
-      <Loading timeDelay={3.5e3}/>
+      <Loading endTrigger={ t?.title ? true : false }/>
       <CardList/>
     </Page>
   );

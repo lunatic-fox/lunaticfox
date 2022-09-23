@@ -4,14 +4,13 @@
  @license MIT
 *//**/
 
-import { useEffect, useState } from 'react';
-import githubLangs, { GitHubLinguist } from '../../services/githubLangs';
 import contrastColor from '../../services/contrastColor';
 import Link from 'next/link';
 import HighBox from '../HighBox';
 import LowBox from '../LowBox';
 import styles from './index.module.css';
 import { CardObject } from '../CardList';
+import { useGithubLangs } from '../../hooks';
 
 type LangProps = {
   color: string | null;
@@ -53,12 +52,8 @@ const Lang = ({ color, name }: LangProps) => {
 type CardProps = Omit<CardObject, 'i'> & { link: string; };
 
 const Card = ({ title, subtitle, langs, link }: CardProps) => {
-  const [ghl, setGhl] = useState({} as GitHubLinguist);
-
-  useEffect(() => {
-   (async () => setGhl(await githubLangs))();
-  }, []);
-
+  const ghl = useGithubLangs();
+  
   return (
     <section className={ styles.wrapper }>
       <HighBox  addHighBox={ styles.addHighBox }>

@@ -14,13 +14,12 @@
   width: 100%;
   height: 100%;
   background: var(--bg1);
-  animation: loadEnd .5s ease-in 0s 1 normal forwards;
 }
 
+.loadEnd { animation: loadEnd .8s ease-in 0s 1 normal forwards }
+
 @keyframes loadEnd {
-  to {
-    opacity: 0;
-  }
+  to { opacity: 0 }
 }
 
 .loadBlock {
@@ -42,9 +41,7 @@
 }
 
 @keyframes loading {
-  to {
-    transform: rotate(360deg);
-  }
+  to { transform: rotate(360deg) }
 }
 
 .loadInnerCircle {

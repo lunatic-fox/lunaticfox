@@ -5,7 +5,6 @@
 *//**/
 
 import Page from '../components/Page';
-import Loading from '../components/Loading';
 import CardList from '../components/CardList';
 
 const Home = () => {
@@ -14,7 +13,6 @@ const Home = () => {
       title: 'Lunatic Fox - Homepage',
       description: 'A collection of all projects of mine.'
     }}>
-      <Loading timeDelay={1.5e3}/>
       <CardList/>
     </Page>
   );

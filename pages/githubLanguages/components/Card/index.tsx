@@ -7,8 +7,8 @@
 import kolorz from 'kolorz';
 import styles from './index.module.css';
 import { useEffect, useState } from 'react';
-import { GitHubLinguist } from '../../../../services/githubLangs';
-import { Translation } from '../../../../services/projects/githubColors/translation';
+import { GitHubLinguist } from '../../../../hooks';
+import { placeholder, Translation } from '../../../../hooks/githubLanguages';
 import contrastColor from '../../../../services/contrastColor';
 import CopyAlert from '../CopyAlert';
 
@@ -22,13 +22,11 @@ const Card = ({
   extensions
 }: CardProps) => {
 
-  const [t, setT] = useState({} as Translation);
+  const t = translation ?? placeholder;
   const [win, setWin] = useState(null as any);
   useEffect(() => {
-    setT(translation);
     setWin(window);
-  }, [translation]);
-
+  }, []);
 
   const [openCard, setOpenCard] = useState(false);
   const [copyAlert, setCopyAlert] = useState(false);

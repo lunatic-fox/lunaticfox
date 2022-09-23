@@ -6,20 +6,14 @@
 
 import Link from 'next/link';
 import styles from './index.module.css';
-import { useEffect, useState } from 'react';
-import translation, { Translation } from '../../../../services/projects/githubColors/translation';
-import githubLangs, { GitHubLinguist } from '../../../../services/githubLangs';
 import Card from '../Card';
+import { useGithubLangs } from '../../../../hooks';
+import { usePageTranslation } from '../../../../hooks/githubLanguages';
 
 const CardList = () => {
   let colored = 0;
-  const [t, setT] = useState({} as Translation);
-  const [ghl, setGhl] = useState({} as GitHubLinguist);
-  
-  useEffect(() => {
-    translation(window).then((e) => setT(e));
-    githubLangs.then(e => setGhl(e));    
-  }, []);
+  const t = usePageTranslation();
+  const ghl = useGithubLangs();
 
   const langsList = Object.values(ghl)
     .map((v, i) => {

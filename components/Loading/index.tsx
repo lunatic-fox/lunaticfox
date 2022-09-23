@@ -7,23 +7,24 @@
 import { useEffect, useState } from 'react';
 import styles from './index.module.css';
 
-const Loading = ({ timeDelay }: { timeDelay: number }) => {
-  const [load, setLoad] = useState('flex');
+const Loading = ({ endTrigger }: { endTrigger: boolean }) => {
+  const [end, setEnd] = useState(false);
+  const [display, setDisplay] = useState('flex');
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setLoad('none');
-    }, timeDelay);
-    return () => clearInterval(interval);
-  }, [timeDelay]);
+    if (endTrigger) {
+      setEnd(true);
+      const interval = setInterval(() => {
+        setDisplay('none');
+        clearInterval(interval);
+      }, .8e3);
+    }
+  }, [endTrigger]);
 
   return (
     <section 
-      className={ styles.loadScreen }
-      style={{ 
-        display: load,
-        animationDelay: `${timeDelay}ms`
-      }}>
+      className={ end ? `${styles.loadScreen} ${styles.loadEnd}` : styles.loadScreen  }
+      style={{ display: display }}>
         <div className={ styles.loadBlock }></div>
         <div className={ styles.loadCircle }>
           <div className={ styles.loadInnerCircle }></div>

@@ -40,10 +40,6 @@ body {
   background: var(--fg1);
 }
 
-a {
-  color: var(--a);
-}
+a { color: var(--a) }
 
-a:hover {
-  color: var(--aHover)
-}
+a:hover { color: var(--aHover) }
