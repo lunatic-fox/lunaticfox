@@ -21,7 +21,6 @@ const Card = ({
   type,
   extensions
 }: CardProps) => {
-
   const t = translation ?? placeholder;
   const [win, setWin] = useState(null as any);
   useEffect(() => {

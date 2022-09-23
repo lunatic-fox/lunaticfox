@@ -12,23 +12,35 @@ import Card from '../Card';
 import apiKeys from '../../services/apiKeys';
 import Loading from '../Loading';
 
-export type CardObject = {
-  i: string;
-  link: string | null;
-  title: string;
-  subtitle: string;
-  langs: string[];
+
+const TRIGGER = 'TRIGGER';
+const placeholder = {
+  i: TRIGGER,
+  link: '' || null,
+  title: '',
+  subtitle: '',
+  langs: ['']
 };
 
+export type CardObj = typeof placeholder;
+
 const CardList = () => {
-  const [cards, setCards] = useState([] as CardObject[]);
+  const [cards, setCards] = useState([placeholder]);
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
     axios.get(apiReqs(apiKeys.MAIN_CARDS))
-      .then(({ data }) => {
-        setCards(data as CardObject[]);
-        if (data.length > 0) {
+      .then(({ data }: { data: CardObj[]}) => {
+        const res = data.filter(e => {
+          const iNav = window.navigator.language;
+          if (iNav === 'pt' || iNav === 'pt-BR')
+            return e.i === 'ptbr';
+          return e.i === 'en'
+        });
+
+        setCards(res);
+
+        if (res.every(f => f.i !== TRIGGER)) {
           const interval = setTimeout(() => {
             setTrigger(true);
             clearInterval(interval);
@@ -41,18 +53,7 @@ const CardList = () => {
     <section className={styles.wrapper}>
       <Loading endTrigger={ trigger }/>
       {
-        cards
-        .filter(e => {
-          const iNav = window.navigator.language;
-          if (iNav === 'pt' || iNav === 'pt-BR') {
-            if (e.i === 'ptbr')
-              return e;
-          } else {
-            if (e.i === 'en')
-              return e;
-          }
-        })
-        .map((e, i) => 
+        cards.map((e, i) => 
           <div key={i}>
             <Card
               link={e.link ?? '#'}

@@ -30,7 +30,7 @@
   font-family: 'Fredoka One', sans-serif;
   font-size: 2em;
   opacity: 0;
-  animation: delay 0s ease-in 1s 1 normal forwards;
+  animation: delay 0s ease-in .3s 1 normal forwards;
 }
 
 @keyframes delay {

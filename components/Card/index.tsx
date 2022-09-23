@@ -9,7 +9,7 @@ import Link from 'next/link';
 import HighBox from '../HighBox';
 import LowBox from '../LowBox';
 import styles from './index.module.css';
-import { CardObject } from '../CardList';
+import { CardObj } from '../CardList';
 import { useGithubLangs } from '../../hooks';
 
 type LangProps = {
@@ -49,11 +49,11 @@ const Lang = ({ color, name }: LangProps) => {
   );
 };
 
-type CardProps = Omit<CardObject, 'i'> & { link: string; };
+type CardProps = Omit<CardObj, 'i' | 'link'> & { link: string; };
 
 const Card = ({ title, subtitle, langs, link }: CardProps) => {
   const ghl = useGithubLangs();
-  
+
   return (
     <section className={ styles.wrapper }>
       <HighBox  addHighBox={ styles.addHighBox }>
