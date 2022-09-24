@@ -14,7 +14,6 @@ type PageProps = {
     title: string;
     description: string;
     urlEndPoint?: string;
-    banner?: string;
   },
   pageTitle?: string;
   children: React.ReactNode
@@ -36,7 +35,7 @@ const Page = ({ metatags, pageTitle, children }: PageProps) => {
         <meta property='og:title' content={ metatags.title }/>
         <meta property='og:description' content={ metatags.description }/>
         <meta property='og:url' content={`https://lunaticfox.vercel.app/${metatags.urlEndPoint ?? ''}`}/>
-        <meta property='og:image' content={ `https://lunaticfox.vercel.app/images/${metatags.banner ?? 'banner'}.png` }/>
+        <meta property='og:image' content='https://lunaticfox.vercel.app/images/banner.png'/>
         <meta property='og:image:type' content='image/png'/>
         <link rel='icon' type='image/png' href='/images/favicon.png'/>
       </Head>
