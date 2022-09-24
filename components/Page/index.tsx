@@ -31,7 +31,7 @@ const Page = ({ metatags, pageTitle, children }: PageProps) => {
         <meta name='twitter:title' content={ metatags.title }/>
         <meta name='twitter:description' content={ metatags.description }/>
         <meta name='twitter:creator' content='@Jojo89373534'/>
-        <meta property='og:type' content='website' />
+        <meta property='og:type' content='website'/>
         <meta property='og:site_name' content='Lunatic Fox'/>
         <meta property='og:title' content={ metatags.title }/>
         <meta property='og:description' content={ metatags.description }/>
