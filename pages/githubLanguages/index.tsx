@@ -17,7 +17,8 @@ const DPage = () => {
       metatags={{
         title: 'GitHub Languages',
         description: 'A web project to present all languages known to GitHub. Here you can see the type, the color in hexadecimal, RGB and HSL, and the language extensions.',
-        urlEndPoint: 'githubLanguages'
+        urlEndPoint: 'githubLanguages',
+        banner: 'banner-githubLanguages'
       }}
       pageTitle={ t.title }>
       <Loading endTrigger={ t.title ? true : false }/>
