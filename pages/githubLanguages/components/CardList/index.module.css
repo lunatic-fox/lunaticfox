@@ -19,9 +19,4 @@
   to { opacity: 1 }
 }
 
-.wrapper *::selection {
-  color: var(--selectionGlow);
-  text-shadow: 0 0 3px var(--selection);
-}
-
 .wrapper { transition: var(--trs) }

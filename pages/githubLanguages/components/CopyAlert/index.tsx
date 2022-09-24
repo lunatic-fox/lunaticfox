@@ -5,8 +5,10 @@
 *//**/
 
 import styles from './index.module.css';
+import useWindow from '../../../../hooks/useWindow';
 
-const CopyAlert = ({ win, cmd }: { win: Window | null, cmd: boolean }) => {
+const CopyAlert = ({ cmd }: { cmd: boolean }) => {
+  const win = useWindow();
   const iNav = win?.navigator.language;
   return (
     <section className={ cmd ? `${styles.wrapper} ${styles.on}` : styles.wrapper }>

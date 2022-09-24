@@ -28,9 +28,8 @@
   border-radius: 8px;
 }
 
-.title::selection, .subtitle::selection {
-  color: var(--selectionGlow);
-  text-shadow: 0 0 3px var(--selection);
+.preventGlow::selection {
+  text-shadow: none;
 }
 
 .langsBox {

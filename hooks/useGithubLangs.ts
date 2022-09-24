@@ -10,6 +10,7 @@ import YAML from 'yaml';
 
 const placeholder = {
   id: {
+    langKey: '',
     name: '',
     color: '' || null,
     type: '',
@@ -19,7 +20,7 @@ const placeholder = {
 
 export type GitHubLinguist = { [k: string]: typeof placeholder.id } ;
 
-export const useGithubLangs = () => {
+const useGithubLangs = () => {
   const [obj, setObj] = useState({} as GitHubLinguist);
   useEffect(() => {
     axios.get(`https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml`)
@@ -29,10 +30,11 @@ export const useGithubLangs = () => {
             Object.entries(YAML.parse(data))
               .map(([k, v]: [string, any]) => {
                 const kalt = k.toLowerCase()
-                  .replace(/\+/g, '-plus')
-                  .replace(/\#/g, '-sharp')
-                  .replace(/\*/g, '-asterisk');
+                  .replace(/\+/g, 'plus')
+                  .replace(/\#/g, 'sharp')
+                  .replace(/\*/g, 'asterisk');
                 return [kalt, {
+                  langKey: kalt,
                   name: k,
                   color: v.color as (string | null),
                   type: v.type as string,
@@ -46,3 +48,5 @@ export const useGithubLangs = () => {
   }, []);
   return obj;
 };
+
+export default useGithubLangs;

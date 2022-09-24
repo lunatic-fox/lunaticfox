@@ -25,10 +25,10 @@ const Loading = ({ endTrigger }: { endTrigger: boolean }) => {
     <section 
       className={ end ? `${styles.loadScreen} ${styles.loadEnd}` : styles.loadScreen  }
       style={{ display: display }}>
-        <div className={ styles.loadBlock }></div>
-        <div className={ styles.loadCircle }>
-          <div className={ styles.loadInnerCircle }></div>
-        </div>
+      <div className={ styles.loadBlock }></div>
+      <div className={ styles.loadCircle }>
+        <div className={ styles.loadInnerCircle }></div>
+      </div>
     </section>
   );
 };
