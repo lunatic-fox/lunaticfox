@@ -6,13 +6,12 @@
 
 import kolorz from 'kolorz';
 import styles from './index.module.css';
-import { useEffect, useState } from 'react';
-import { GitHubLinguist } from '../../../../hooks';
-import { placeholder, Translation } from '../../../../hooks/githubLanguages';
+import { useState } from 'react';
+import { GitHubLinguist } from '../../../../hooks/useGithubLangs';
 import contrastColor from '../../../../services/contrastColor';
 import CopyAlert from '../CopyAlert';
 
-type CardProps = GitHubLinguist[string] & { translation: Translation };
+type CardProps = GitHubLinguist[string] & { translation: any/* Translation */ };
 
 const Card = ({ 
   translation,
@@ -21,11 +20,7 @@ const Card = ({
   type,
   extensions
 }: CardProps) => {
-  const t = translation ?? placeholder;
-  const [win, setWin] = useState(null as any);
-  useEffect(() => {
-    setWin(window);
-  }, []);
+  const t = translation;
 
   const [openCard, setOpenCard] = useState(false);
   const [copyAlert, setCopyAlert] = useState(false);
@@ -139,7 +134,7 @@ const Card = ({
         </section>
       </article>
 
-      <CopyAlert win={ win } cmd={ copyAlert }/>
+      <CopyAlert cmd={ copyAlert }/>
 
       <article className={ openCard ? styles.cardInfoWrapper : styles.cardInfoWrapperOff }>
         { openedCard }

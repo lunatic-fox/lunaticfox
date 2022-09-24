@@ -10,7 +10,7 @@ import HighBox from '../HighBox';
 import LowBox from '../LowBox';
 import styles from './index.module.css';
 import { CardObj } from '../CardList';
-import { useGithubLangs } from '../../hooks';
+import useGithubLangs from '../../hooks/useGithubLangs';
 
 type LangProps = {
   color: string | null;
@@ -39,12 +39,14 @@ const Lang = ({ color, name }: LangProps) => {
               `solid 1px ${contrastColor(color, .3)}55`
             : `solid 1px #5557` 
       }}></div>
-      <span style={{
-        padding: '2px 0 0 3px',
-        marginRight: '6px',
-        fontSize: '.8em',
-        userSelect: 'none'
-      }}>{ name }</span>
+      <span
+        className={ styles.preventGlow }
+        style={{
+          padding: '2px 0 0 3px',
+          marginRight: '6px',
+          fontSize: '.8em',
+          userSelect: 'none'
+        }}>{ name }</span>
     </span>
   );
 };

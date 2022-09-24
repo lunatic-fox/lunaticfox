@@ -7,12 +7,28 @@
 import Link from 'next/link';
 import styles from './index.module.css';
 import Card from '../Card';
-import { useGithubLangs } from '../../../../hooks';
-import { usePageTranslation } from '../../../../hooks/githubLanguages';
+import useGithubLangs from '../../../../hooks/useGithubLangs';
+import useTranslation from '../../../../hooks/useTranslation';
+import apiKeys from '../../../../services/apiKeys';
 
 const CardList = () => {
   let colored = 0;
-  const t = usePageTranslation();
+  const t = useTranslation(apiKeys.GITHUB_LANGUAGES_TRANSLATION,
+    {
+      numberOfLanguages: '',
+      languagesWithColor: '',
+      sourceFile: '',
+      myGithub: '',
+      typeString: '',
+      type: {
+        programming: '',
+        data: '',
+        prose: ''
+      },
+      colors: '',
+      extensions: ''
+    });
+
   const ghl = useGithubLangs();
 
   const langsList = Object.values(ghl)
@@ -34,13 +50,13 @@ const CardList = () => {
           <h4>
             <span>{ t.sourceFile }: </span>
             <Link href="https://github.com/github/linguist/blob/master/lib/linguist/languages.yml">
-              <a target="_blank"><i>languages.yml</i></a>
+              <a><i>languages.yml</i></a>
             </Link>
           </h4>
           <h4>
             <span>{ t.myGithub }: </span>
             <Link href="https://github.com/lunatic-fox">
-              <a target="_blank"><i>Lunatic Fox</i></a>
+              <a><i>Lunatic Fox</i></a>
             </Link>
           </h4>
         </section>

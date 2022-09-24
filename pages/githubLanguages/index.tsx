@@ -7,10 +7,11 @@
 import Page from '../../components/Page';
 import Loading from '../../components/Loading';
 import CardList from './components/CardList';
-import { usePageTranslation } from '../../hooks/githubLanguages';
+import useTranslation from '../../hooks/useTranslation';
+import apiKeys from '../../services/apiKeys';
 
 const DPage = () => {
-  const t = usePageTranslation();
+  const t = useTranslation(apiKeys.GITHUB_LANGUAGES_TRANSLATION, { title: '' });
   return (
     <Page 
       metatags={{
