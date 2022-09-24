@@ -6,12 +6,12 @@
 
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import apiReqs from '../services/apiReqs';
+import dataKeys from '../services/dataKeys';
 
 const useTranslation = (apiKey: string, placeholder: { [k: string]: any }) => {
   const [t, setT] = useState({});
   useEffect(() => {
-    axios.get(apiReqs(apiKey))
+    axios.get(dataKeys.req(apiKey))
       .then(({ data }) => {
         const iNav = window.navigator.language;
         if (iNav === 'pt' || iNav === 'pt-BR') {

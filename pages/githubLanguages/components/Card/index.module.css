@@ -71,8 +71,6 @@
   z-index: 1;
   opacity: 0;
   animation: cardOpened .3s ease-in-out 0s 1 normal forwards;
-
-  
 }
 
 @keyframes cardOpened {

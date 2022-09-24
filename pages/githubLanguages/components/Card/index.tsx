@@ -5,7 +5,6 @@
 *//**/
 
 import parse from 'html-react-parser';
-
 import kolorz from 'kolorz';
 import styles from './index.module.css';
 import { useState } from 'react';
@@ -32,7 +31,7 @@ const Card = ({
 
   const [openCard, setOpenCard] = useState(false);
   const [copyAlert, setCopyAlert] = useState(false);
-  
+
   const gColorAlt = () => kolorz.hex(color ?? '');
   const gColorShade = gColorAlt().lightness(-.3).value;
   const gColorGlow = gColorAlt().lightness(.2).value;
@@ -50,7 +49,7 @@ const Card = ({
       ].join('\n') : null,
       extensions ? `${t.extensions}: ${extensions.join(', ')}` : null   
     ].filter(e => e)
-    .join('\n');
+     .join('\n');
     navigator.clipboard.writeText(response);
     setCopyAlert(true);
     setTimeout(() => setCopyAlert(false), 2e3);
@@ -124,7 +123,7 @@ const Card = ({
                   ].map((e, i) => <span key={ i }><b>- </b>{ e }<br/></span>)
                 }
               </>
-              : <></>
+              : ''
             }
             {
               extensions ?
@@ -132,7 +131,7 @@ const Card = ({
                 <span><b>{ t.extensions }</b></span><br/>
                 <span>{ extensions.join(' \u00A0') }</span>
               </>
-              : <></>
+              : ''
             }
           </p>
       }
@@ -160,7 +159,6 @@ const Card = ({
       <article className={ openCard ? styles.cardInfoWrapper : styles.cardInfoWrapperOff }>
         { openedCard }
       </article>
-
     </section>
   );
 };

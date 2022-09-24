@@ -15,7 +15,8 @@ const api = async (req: NextApiRequest, res: NextApiResponse<object>) => {
   const dataDir = path.join(process.cwd(), 'data');
 
   const dtRes = async (nRes: number) => {
-    const dt = await fs.readFile(`${dataDir}/${dataKeys[`dt${nRes}`]}.yml`, 'utf8');
+    const fileName: any = dataKeys;
+    const dt = await fs.readFile(`${dataDir}/${fileName[`dt${nRes}`]}.yml`, 'utf8');
     return YAML.parse(dt);
   };
 

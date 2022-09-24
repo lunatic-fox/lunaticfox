@@ -5,7 +5,6 @@
 *//**/
 
 import axios from 'axios';
-import apiReqs from '../../services/apiReqs';
 import { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import Card from '../Card';
@@ -29,7 +28,7 @@ const CardList = () => {
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
-    axios.get(apiReqs(dataKeys.dt0))
+    axios.get(dataKeys.req(dataKeys.dt0))
       .then(({ data }: { data: CardObj[]}) => {
         const res = data.filter(e => {
           const iNav = window.navigator.language;
