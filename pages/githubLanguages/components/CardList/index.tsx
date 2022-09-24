@@ -9,7 +9,8 @@ import styles from './index.module.css';
 import Card from '../Card';
 import useGithubLangs from '../../../../hooks/useGithubLangs';
 import useTranslation from '../../../../hooks/useTranslation';
-import apiKeys from '../../../../services/apiKeys';
+import dataKeys from '../../../../services/dataKeys';
+import useDevicons from '../../../../hooks/useDevicons';
 
 export const placeholder = {
   numberOfLanguages: '',
@@ -23,18 +24,26 @@ export const placeholder = {
     prose: ''
   },
   colors: '',
-  extensions: ''
+  extensions: '',
+  icon: { langKey: '' }
 };
 
 const CardList = () => {
   let colored = 0;
-  const t = useTranslation(apiKeys.GITHUB_LANGUAGES_TRANSLATION, placeholder);
+  const t = useTranslation(dataKeys.dt1, placeholder);
   const ghl = useGithubLangs();
+  const devicons = useDevicons();
 
   const langsList = Object.values(ghl)
     .map((v, i) => {
       if (v.color) colored++;
-      return <Card key={ i } translation={ t } { ...v } />;
+      return (
+        <Card
+          key={ i }
+          translation={ t }
+          icon={ devicons }
+          { ...v }/>
+      );
     });
 
   return (

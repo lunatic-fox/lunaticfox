@@ -9,7 +9,7 @@ import apiReqs from '../../services/apiReqs';
 import { useEffect, useState } from 'react';
 import styles from './index.module.css';
 import Card from '../Card';
-import apiKeys from '../../services/apiKeys';
+import dataKeys from '../../services/dataKeys';
 import Loading from '../Loading';
 
 
@@ -29,7 +29,7 @@ const CardList = () => {
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
-    axios.get(apiReqs(apiKeys.MAIN_CARDS))
+    axios.get(apiReqs(dataKeys.dt0))
       .then(({ data }: { data: CardObj[]}) => {
         const res = data.filter(e => {
           const iNav = window.navigator.language;

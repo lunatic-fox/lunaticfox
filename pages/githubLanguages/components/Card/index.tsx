@@ -4,6 +4,8 @@
  @license MIT
 *//**/
 
+import parse from 'html-react-parser';
+
 import kolorz from 'kolorz';
 import styles from './index.module.css';
 import { useState } from 'react';
@@ -12,14 +14,19 @@ import contrastColor from '../../../../services/contrastColor';
 import CopyAlert from '../CopyAlert';
 import { placeholder } from '../CardList';
 
-type CardProps = GitHubLinguist[string] & { translation: any };
+type CardProps = GitHubLinguist[string] & {
+  translation: any,
+  icon: { [k: string]: string }
+};
 
 const Card = ({ 
   translation,
+  langKey,
   color,
   name,
   type,
-  extensions
+  extensions,
+  icon
 }: CardProps) => {
   const t = translation ?? placeholder;
 
@@ -66,10 +73,23 @@ const Card = ({
     background: color ? gContrast : '#7776'
   };
 
+  let foundIcon = '';
+  if (icon && langKey)
+    foundIcon = icon[langKey];
+  
   const openedCard = (
     <article
       className={ openCard ? styles.openedCard : '' }
       style={ langStyle }>
+
+      {
+        foundIcon ? 
+          parse(`<div style="margin-bottom: 10px; width: 150px;">${
+            icon[langKey].replace(/""/gm, `"${color ? gContrast : '#777a'}"`)
+          }</div>`)
+          : ''
+      }
+
       <section className={ `${styles.copySection} ${styles.copySectionOn}` }>
         <section>
           <section className={ styles.title }>{ name }</section>

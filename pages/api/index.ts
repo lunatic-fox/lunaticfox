@@ -8,21 +8,31 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import path from 'path';
 import { promises as fs } from 'fs';
 import YAML from 'yaml';
-import apiKeys from '../../services/apiKeys';
+import dataKeys from '../../services/dataKeys';
 
 const api = async (req: NextApiRequest, res: NextApiResponse<object>) => {
-  let data: string;
+  let data: object;
   const dataDir = path.join(process.cwd(), 'data');
 
+  const dtRes = async (nRes: number) => {
+    const dt = await fs.readFile(`${dataDir}/${dataKeys[`dt${nRes}`]}.yml`, 'utf8');
+    return YAML.parse(dt);
+  };
+
   switch (req.query.data) {
-    case apiKeys.MAIN_CARDS:
-      data = await fs.readFile(`${dataDir}/${apiKeys.MAIN_CARDS}.yml`, 'utf8');
-      res.status(200).json(YAML.parse(data));
+    case dataKeys.dt0:
+      data = await dtRes(0);
+      res.status(200).json(data);
       break;
         
-    case apiKeys.GITHUB_LANGUAGES_TRANSLATION:
-      data = await fs.readFile(`${dataDir}/${apiKeys.GITHUB_LANGUAGES_TRANSLATION}.yml`, 'utf8');
-      res.status(200).json(YAML.parse(data));
+    case dataKeys.dt1:
+      data = await dtRes(1);
+      res.status(200).json(data);
+      break;
+
+    case dataKeys.dt2:
+      data = await dtRes(2);
+      res.status(200).json(data);
       break;
   
     default:

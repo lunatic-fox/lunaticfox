@@ -10,6 +10,7 @@ import YAML from 'yaml';
 
 const placeholder = {
   id: {
+    langKey: '',
     name: '',
     color: '' || null,
     type: '',
@@ -33,6 +34,7 @@ const useGithubLangs = () => {
                   .replace(/\#/g, 'sharp')
                   .replace(/\*/g, 'asterisk');
                 return [kalt, {
+                  langKey: kalt,
                   name: k,
                   color: v.color as (string | null),
                   type: v.type as string,
