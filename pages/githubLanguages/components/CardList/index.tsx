@@ -11,24 +11,24 @@ import useGithubLangs from '../../../../hooks/useGithubLangs';
 import useTranslation from '../../../../hooks/useTranslation';
 import apiKeys from '../../../../services/apiKeys';
 
+export const placeholder = {
+  numberOfLanguages: '',
+  languagesWithColor: '',
+  sourceFile: '',
+  myGithub: '',
+  typeString: '',
+  type: {
+    programming: '',
+    data: '',
+    prose: ''
+  },
+  colors: '',
+  extensions: ''
+};
+
 const CardList = () => {
   let colored = 0;
-  const t = useTranslation(apiKeys.GITHUB_LANGUAGES_TRANSLATION,
-    {
-      numberOfLanguages: '',
-      languagesWithColor: '',
-      sourceFile: '',
-      myGithub: '',
-      typeString: '',
-      type: {
-        programming: '',
-        data: '',
-        prose: ''
-      },
-      colors: '',
-      extensions: ''
-    });
-
+  const t = useTranslation(apiKeys.GITHUB_LANGUAGES_TRANSLATION, placeholder);
   const ghl = useGithubLangs();
 
   const langsList = Object.values(ghl)

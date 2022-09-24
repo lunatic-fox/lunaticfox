@@ -10,8 +10,9 @@ import { useState } from 'react';
 import { GitHubLinguist } from '../../../../hooks/useGithubLangs';
 import contrastColor from '../../../../services/contrastColor';
 import CopyAlert from '../CopyAlert';
+import { placeholder } from '../CardList';
 
-type CardProps = GitHubLinguist[string] & { translation: any/* Translation */ };
+type CardProps = GitHubLinguist[string] & { translation: any };
 
 const Card = ({ 
   translation,
@@ -20,7 +21,7 @@ const Card = ({
   type,
   extensions
 }: CardProps) => {
-  const t = translation;
+  const t = translation ?? placeholder;
 
   const [openCard, setOpenCard] = useState(false);
   const [copyAlert, setCopyAlert] = useState(false);
