@@ -54,6 +54,12 @@
   background: #085cda;
   box-shadow: inset #0b0daa 10px 10px 25px;
   cursor: pointer;
+  opacity: 0;
+  animation: delay 0s ease-in .3s 1 normal forwards;
+}
+
+@keyframes delay {
+  to { opacity: 1 }
 }
 
 .linkBtnBox:hover {
