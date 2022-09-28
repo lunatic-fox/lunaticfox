@@ -21,7 +21,7 @@ const placeholder = {
 export type GitHubLinguist = { [k: string]: typeof placeholder.id } ;
 
 const useGithubLangs = () => {
-  const [obj, setObj] = useState({} as GitHubLinguist);
+  const [obj, setObj] = useState(placeholder as GitHubLinguist);
   useEffect(() => {
     axios.get(`https://raw.githubusercontent.com/github/linguist/master/lib/linguist/languages.yml`)
       .then(({ data }) => 
