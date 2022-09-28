@@ -10,10 +10,8 @@ import dataKeys from '../services/dataKeys';
 
 const placeholder = { langKey: '' };
 
-export type Devicons = { [k: string]: typeof placeholder.langKey } ;
-
 const useDevicons = () => {
-  const [obj, setObj] = useState({} as Devicons);
+  const [obj, setObj] = useState(placeholder);
   useEffect(() => {
     axios.get(dataKeys.req(dataKeys.dt2))
       .then(({ data }) => setObj(data))

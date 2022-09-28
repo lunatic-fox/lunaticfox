@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react';
 import dataKeys from '../services/dataKeys';
 
 const useTranslation = (apiKey: string, placeholder: { [k: string]: any }) => {
-  const [t, setT] = useState({});
+  const [t, setT] = useState(placeholder);
   useEffect(() => {
     axios.get(dataKeys.req(apiKey))
       .then(({ data }) => {
