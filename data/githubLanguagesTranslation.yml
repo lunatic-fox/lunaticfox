@@ -7,7 +7,8 @@ en:
   numberOfLanguages: Number of languages
   languagesWithColor: Languages with color
   sourceFile: Source file from GitHub
-  myGithub: My GitHub
+  devicons: Icons by
+  projectRepos: Project repository
   typeString: type
   type:
     programming: programming
@@ -21,7 +22,8 @@ ptbr:
   numberOfLanguages: Número de linguagens
   languagesWithColor: Linguagens com cor
   sourceFile: Arquivo fonte do GitHub
-  myGithub: Meu GitHub
+  devicons: Ícones por
+  projectRepos: Repositório do projeto
   typeString: tipo
   type:
     programming: programação
