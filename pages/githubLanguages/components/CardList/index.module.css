@@ -20,3 +20,10 @@
 }
 
 .wrapper { transition: var(--trs) }
+
+.linkWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.githubIcon { fill: var(--fg1) }
