@@ -54,13 +54,13 @@ const Form = () => {
       if (iconName.value === '')
         closeOpts();
 
-      iconName.onkeydown = (e) => {
+      iconName.onkeydown = e => {
         if (e.key === 'Enter')
           closeOpts();
       };
 
       iconName.oninput = () => {
-        setIcon(iconName.value);
+        setIcon(iconName.value.toLowerCase());
         setVersion(null);
 
         if (iconName.value === '') {
