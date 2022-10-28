@@ -1,0 +1,296 @@
+/*
+ author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
+ copyright: Josélio Júnior (Lunatic Fox) - 2022
+ license: MIT
+*/
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.wrapper * {
+  transition: var(--trs);
+  -webkit-user-drag: none;
+}
+
+.pageBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.inputWrapper {
+  position: relative;
+  padding-top: calc(1pc + 3px);
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  left: 1pc;
+  user-select: none;
+}
+
+.input {
+  width: calc(240px - 1pc);
+  border-radius: 1.5pc;
+  font-size: 1.5pc;
+  padding: 3px 1pc;
+  margin-bottom: 10px;
+  color: var(--fg1);
+  background: var(--bg2);
+  box-shadow: inset var(--boxShadowShade) 2px 2px 5px;
+  text-align: center;
+}
+
+.inputRangeWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 240px;
+}
+
+.inputRange {
+  appearance: none;
+  width: calc(100% - 48px);
+  background: var(--bg2);
+  box-shadow: inset var(--boxShadowShade) 2px 2px 5px;
+  margin: 3px 5px;
+  padding: 0 1px;
+  border-radius: 18px;
+  height: 18px;
+}
+
+.inputRange + section {
+  width: 48px;
+  text-align: center;
+}
+
+.inputRange::-webkit-slider-thumb {
+  appearance: none;
+  --sz-thumb: 16px;
+  width: var(--sz-thumb);
+  height: var(--sz-thumb);
+  border-radius: var(--sz-thumb);
+  background: var(--fg1);
+  cursor: pointer;
+}
+
+.inputNumber {
+  padding: 3px 1pc;
+  margin: 0 5px;
+}
+
+.optionsList {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 400px;
+  margin: 5px 0;
+}
+
+.optionsItemWrapper {
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.optionsItem {
+  margin: 1px;
+  padding: 2px 8px;
+  border-radius: 80px;
+  text-align: center;
+  background: var(--fg1);
+  color: var(--bg1);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.optionsItem:hover {
+  background: var(--selectionGlow);
+}
+
+.colorWrapper {
+  position: relative;
+  margin: 4px 0 0 calc(-2pc - 2px);
+}
+
+.colorMask,
+.color {
+  position: absolute;
+  z-index: 1;
+  margin: 16px 64px;
+  --sz: 28px;
+  height: var(--sz);
+  width: var(--sz);
+}
+
+.colorMask {
+  transition: 0s;  
+  border-radius: var(--sz);
+}
+
+.colorMask {
+  background: 
+    radial-gradient(white, #0000 99%),
+    conic-gradient(
+      #ff0000,
+      #ffff00,
+      #00ff00,
+      #00ffff,
+      #0000ff,
+      #ff00ff,
+      #ff0000
+    );
+}
+
+.color {
+  position: absolute;
+  opacity: 0;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.imageWrapper {
+  display: flex;
+  position: relative;
+  height: 100px;
+  width: 100px;
+  margin: 30px 10px 10px 10px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.versions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  user-select: none;
+}
+
+.versionItem {
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+  padding: 2px 10px;
+}
+
+.versionItem div {
+  display: flex;
+  width: 100%;
+  background-color: brown;
+
+}
+
+.outputOpts section:hover,
+.versionItem:hover,
+.copyIconWrapper:hover {
+  background: var(--selectionGlow);
+  color: var(--bg1);
+  box-shadow:
+    inset var(--selection) 0 0 15px,
+    var(--selectionGlow) 0 0 8px;
+  border-radius: 8px;
+  transition: var(--trs);
+}
+
+.previewLabel {
+  position: absolute;
+  top: -20px;
+}
+
+.textToCopy {
+  width: 240px;
+  height: 160px;
+  margin: 10px 0;
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--fg1);
+  background: var(--bg2);
+  box-shadow: inset var(--boxShadowShade) 2px 2px 5px;
+  word-break: break-all;
+  font-family: monospace;
+  resize: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+.themeMask {
+  position: absolute;
+  --sz: 26px;
+  height: var(--sz) !important;
+  width: var(--sz) !important;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  border: solid 1px var(--fg1);
+  border-radius: var(--sz);
+  background:
+    conic-gradient(
+      #000000 50%,
+      #ffffff 50%
+    );
+}
+
+.outputOpts {
+  width: 240px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.outputOpts div {
+  width: fit-content;
+  flex-grow: 1;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.outputOpts div section {
+  padding: 3px 5px;
+}
+
+.copyIconWrapper,
+.copyIcon {
+  position: absolute;
+  bottom: 16px;
+  right: 0;
+  --sz: 28px;
+  width: var(--sz);
+  height: var(--sz);
+  cursor: pointer;
+}
+
+.copyIconWrapper {
+  padding: 4px;
+  background: var(--bg1);  
+}
+.copyIconWrapper:hover * { background: var(--bg1) }
+
+.copyIcon {
+  bottom: 4px;
+  right: 1px;
+  margin-left: 5px;
+  clip-path: path('M8.7306 3A1.3332 1.3186 90 007.4125 4.3327V8.1887H3.8934A1.3332 1.3186 90 002.5754 9.5214V25.4794A1.3332 1.3186 90 003.8934 26.8125H15.0815A1.3332 1.3186 90 0016.3999 25.4794V21.6239h3.5185A1.3332 1.3186 90 0021.2371 20.2908V4.3327A1.3332 1.3186 90 0019.9186 3ZM10.5564 5.1845H18.0933A.9618.9513 90 0119.0445 6.1461V18.4778A.9618.9513 90 0118.0933 19.4394H10.5564A.9618.9513 90 019.6052 18.4778V6.1461A.9618.9513 90 0110.5564 5.1845ZM5.7192 10.3732h1.6934v9.9176a1.3332 1.3186 90 001.3182 1.3331h5.4767V23.6664A.9618.9513 90 0113.2561 24.6281H5.7192A.9618.9513 90 014.7681 23.6664V11.3347A.9618.9513 90 015.7192 10.3732Z');
+  background: var(--fg1);
+}
+
+.copyMsg {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  border-radius: 5px;
+  width: 250px;
+  height: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00ff00a1;
+  color: #ffffff;
+  font-weight: 700;
+  user-select: none;
+}

@@ -2,6 +2,25 @@
 # copyright: Josélio Júnior (Lunatic Fox) - 2022
 # license: MIT
 
+# Devicon API
+- i: en
+  link: /deviconApi
+  title: Devicon API
+  subtitle: An derivative API project to serve Devicon plain icons in different colors and sizes.
+  langs:
+    - typescript
+    - json
+    - svg
+
+- i: ptbr
+  link: /deviconApi
+  title: Devicon API
+  subtitle: Um projeto de API derivada para servir ícones Devicon simples em diferentes cores e tamanhos.
+  langs:
+    - typescript
+    - json
+    - svg
+
 # Kolorz
 - i: en
   link: https://www.npmjs.com/package/kolorz

@@ -41,7 +41,12 @@ const Page = ({ metatags, pageTitle, children }: PageProps) => {
       </Head>
       <Header/>
       <Content>
-        { pageTitle ? <h1 style={{fontWeight: 500, fontFamily: 'Fredoka One'}}>{ pageTitle }</h1> : ''}
+        { pageTitle ? 
+          <h1 style={{
+            fontWeight: 500,
+            fontFamily: 'Fredoka One',
+            textAlign: 'center'
+          }}>{ pageTitle }</h1> : ''}
         { children }
       </Content>
       <Footer/>

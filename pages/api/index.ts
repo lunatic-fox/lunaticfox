@@ -35,6 +35,11 @@ const api = async (req: NextApiRequest, res: NextApiResponse<object>) => {
       data = await dtRes(2);
       res.status(200).json(data);
       break;
+
+    case dataKeys.dt3:
+      data = await dtRes(3);
+      res.status(200).json(data);
+      break;
   
     default:
       res.write('Data not found!');
