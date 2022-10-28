@@ -154,6 +154,8 @@ const Form = () => {
       alt='icon'
       width={100}
       height={100}/>;
+  
+  const reqColor = (c: string) => c.replace(/#/g, '');
 
   return (
     <section className={ styles.wrapper }>
@@ -325,7 +327,7 @@ const Form = () => {
                   }${
                     icon && iconObj[icon] && version ? `&version=${version}` : ''
                   }${
-                    icon && iconObj[icon] && color ? `&color=${color}${alphaHex ?? 'ff'}` : ''
+                    icon && iconObj[icon] && color ? `&color=${reqColor(color)}${alphaHex ?? 'ff'}` : ''
                   }${
                     icon && iconObj[icon] && size ? `&size=${size}` : ''
                   })`
@@ -335,7 +337,7 @@ const Form = () => {
                   }${
                     icon && iconObj[icon] && version ? `&version=${version}` : ''
                   }${
-                    icon && iconObj[icon] && color ? `&color=${color}${alphaHex ?? 'ff'}` : ''
+                    icon && iconObj[icon] && color ? `&color=${reqColor(color)}${alphaHex ?? 'ff'}` : ''
                   }${
                     icon && iconObj[icon] && size ? `&size=${size}` : ''
                   }" alt="${
@@ -348,7 +350,7 @@ const Form = () => {
                 }${
                   icon && iconObj[icon] && version ? `&version=${version}` : ''
                 }${
-                  icon && iconObj[icon] && color ? `&color=${color}${alphaHex ?? 'ff'}` : ''
+                  icon && iconObj[icon] && color ? `&color=${reqColor(color)}${alphaHex ?? 'ff'}` : ''
                 }${
                   icon && iconObj[icon] && size ? `&size=${size}` : ''
                 }`
