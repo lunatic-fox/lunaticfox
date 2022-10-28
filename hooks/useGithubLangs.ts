@@ -18,7 +18,7 @@ const placeholder = {
   }
 };
 
-export type GitHubLinguist = { [k: string]: typeof placeholder.id } ;
+export type GitHubLinguist = { [k: string]: typeof placeholder.id };
 
 const useGithubLangs = () => {
   const [obj, setObj] = useState(placeholder as GitHubLinguist);

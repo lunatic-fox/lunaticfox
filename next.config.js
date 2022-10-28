@@ -4,8 +4,9 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: [
-      'cdn.jsdelivr.net'
-    ]
+      'deviconapi.vercel.app'
+    ],
+    dangerouslyAllowSVG: true
   }
 }
 
