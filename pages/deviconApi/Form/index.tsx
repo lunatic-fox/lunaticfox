@@ -157,6 +157,14 @@ const Form = () => {
   
   const reqColor = (c: string) => c.replace(/#/g, '');
 
+  const defaultSrc = () => `https://deviconapi.vercel.app/${ icon && iconObj[icon] ? icon : '' }${
+    `?${ [
+      (icon && iconObj[icon] && version) && `version=${version}`,
+      (icon && iconObj[icon] && color) && `color=${reqColor(color)}${alphaHex ?? 'ff'}`,
+      (icon && iconObj[icon] && size) && `size=${size}`,
+    ].filter(e => e).join('&') }`
+  }`;
+
   return (
     <section className={ styles.wrapper }>
       <section className={ styles.pageBlock }>
@@ -296,64 +304,41 @@ const Form = () => {
               value={
                 outs === outOpts.MD_GITHUB ?
                 `<picture>
-                  <source 
+                  <source
                     media="(prefers-color-scheme: dark)"
-                    srcset="https://deviconapi.vercel.app/?${
-                      icon && iconObj[icon] ? icon : ''
-                    }${
-                      icon && iconObj[icon] && version ? `&version=${version}` : ''
-                    }&theme=dark${
-                    icon && iconObj[icon] && size ? `&size=${size}` : ''
-                  }">
+                    srcset="${
+                      `https://deviconapi.vercel.app/${ icon && iconObj[icon] ? icon : '' }?${
+                        [
+                          'theme=dark',
+                          (icon && iconObj[icon] && version) && `version=${version}`,
+                          (icon && iconObj[icon] && size) && `size=${size}`,
+                        ].filter(e => e).join('&')
+                      }`
+                    }"/>
                   <img
                     alt="${icon && iconObj[icon] ? icon : ''}"
                     title="${icon && iconObj[icon] ? icon : ''}"
-                    src="https://deviconapi.vercel.app/?${
-                      icon && iconObj[icon] ? icon : ''
-                    }${
-                      icon && iconObj[icon] && version ? `&version=${version}` : ''
-                    }&theme=light${
-                      icon && iconObj[icon] && size ? `&size=${size}` : ''
-                    }">
+                    src="${
+                      `https://deviconapi.vercel.app/${ icon && iconObj[icon] ? icon : '' }?${
+                        [
+                          'theme=light',
+                          (icon && iconObj[icon] && version) && `version=${version}`,
+                          (icon && iconObj[icon] && size) && `size=${size}`,
+                        ].filter(e => e).join('&')
+                      }`
+                    }"/>
                 </picture>`
-                  .replace(/\n/gm, '')
-                  .replace(/\s+/gm, ' ')
-                  .replace(/>\s</gm, '><')
+                .replace(/\n/gm, '')
+                .replace(/\s+/gm, ' ')
+                .replace(/>\s</gm, '><')
+
                 : outs === outOpts.MD ?
-                  `![${
-                    icon && iconObj[icon] ? icon : ''
-                  }](https://deviconapi.vercel.app/?${
-                    icon && iconObj[icon] ? icon : ''
-                  }${
-                    icon && iconObj[icon] && version ? `&version=${version}` : ''
-                  }${
-                    icon && iconObj[icon] && color ? `&color=${reqColor(color)}${alphaHex ?? 'ff'}` : ''
-                  }${
-                    icon && iconObj[icon] && size ? `&size=${size}` : ''
-                  })`
+                  `![${ icon && iconObj[icon] ? icon : '' }](${ defaultSrc() })`
+
                 : outs === outOpts.HTML ? 
-                  `<img src="https://deviconapi.vercel.app/?${
-                    icon && iconObj[icon] ? icon : ''
-                  }${
-                    icon && iconObj[icon] && version ? `&version=${version}` : ''
-                  }${
-                    icon && iconObj[icon] && color ? `&color=${reqColor(color)}${alphaHex ?? 'ff'}` : ''
-                  }${
-                    icon && iconObj[icon] && size ? `&size=${size}` : ''
-                  }" alt="${
-                    icon && iconObj[icon] ? icon : ''
-                  }" title="${
-                    icon && iconObj[icon] ? icon : ''
-                  }"/>`
-              : `https://deviconapi.vercel.app/?${
-                icon && iconObj[icon] ? icon : ''
-                }${
-                  icon && iconObj[icon] && version ? `&version=${version}` : ''
-                }${
-                  icon && iconObj[icon] && color ? `&color=${reqColor(color)}${alphaHex ?? 'ff'}` : ''
-                }${
-                  icon && iconObj[icon] && size ? `&size=${size}` : ''
-                }`
+                  `<img src="${ defaultSrc() }" alt="${ icon && iconObj[icon] ? icon : '' }" title="${ icon && iconObj[icon] ? icon : '' }"/>`
+
+                : defaultSrc()
             }/>
 
             <div id='copyBtn'>
