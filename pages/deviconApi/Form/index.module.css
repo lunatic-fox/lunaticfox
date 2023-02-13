@@ -1,6 +1,6 @@
 /*
  author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
- copyright: Josélio Júnior (Lunatic Fox) - 2022
+ copyright: Josélio Júnior (Lunatic Fox) - 2023
  license: MIT
 */
 
@@ -201,6 +201,8 @@
 .previewLabel {
   position: absolute;
   top: -20px;
+  left: 0;
+  font-size: 12px;
 }
 
 .textToCopy {
@@ -221,7 +223,7 @@
 
 .themeMask {
   position: absolute;
-  --sz: 26px;
+  --sz: 22px;
   height: var(--sz) !important;
   width: var(--sz) !important;
   top: 0;

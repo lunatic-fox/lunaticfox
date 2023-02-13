@@ -1,9 +1,21 @@
 # author: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
-# copyright: Josélio Júnior (Lunatic Fox) - 2022
+# copyright: Josélio Júnior (Lunatic Fox) - 2023
 # license: MIT
 
 en:
-  title: Devicon API - Interface
+  iconName: Icon name
+  outputOptions: Output options
+  autoTGMD: Auto themed GitHub Markdown
+  alpha: Opacity
+  size: Size
+  preview: Preview
+  copied: Copied!
 
 ptbr:
-  title: Devicon API - Interface
+  iconName: Nome do ícone
+  outputOptions: Opções de saída
+  autoTGMD: Markdown do GitHub com tema automático
+  alpha: Opacidade
+  size: Tamanho
+  preview: Pré-visualização
+  copied: Copiado!

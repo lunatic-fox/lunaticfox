@@ -1,6 +1,6 @@
 /**
  @author Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
- @copyright Josélio Júnior (Lunatic Fox) - 2022
+ @copyright Josélio Júnior (Lunatic Fox) - 2023
  @license MIT
 *//**/
 
@@ -12,10 +12,32 @@ import useDeviconObj from '../../../hooks/useDeviconObj';
 import previewBgContrastColor from '../../../services/previewBgContrastColor';
 import styles from './index.module.css';
 import bwContrastColor from '../../../services/bwContrastColor';
+import useTranslation from '../../../hooks/useTranslation';
+import dataKeys from '../../../services/dataKeys';
 
-const Form = () => {
+const outOpts = {
+  LINK: 1,
+  MD: 2,
+  MD_GITHUB: 3,
+  HTML: 4
+};
+
+const unsharp = (str: string) => str.replace(/#/g, '');
+
+const placeholder = {
+  iconName: '',
+  outputOptions: '',
+  autoTGMD: '',
+  alpha: '',
+  size: '',
+  preview: '',
+  copied: ''
+};
+
+export default function Form() {
   const iconObj = useDeviconObj();
   const doc = useDocument();
+  const t = useTranslation(dataKeys.dt3, placeholder);
 
   const [icon, setIcon] = useState(null as string | null);
   const [version, setVersion] = useState(null as string | null);
@@ -26,37 +48,21 @@ const Form = () => {
   const [outs, setOuts] = useState(1);
   const [copyBtn, setCopyBtn] = useState(false);
 
-  const outOpts = {
-    LINK: 1,
-    MD: 2,
-    MD_GITHUB: 3,
-    HTML: 4
-  };
-
-  const optionsList = (close: boolean) => {
-    if (doc) {
-      const options = doc.getElementById('optionsList') as HTMLElement;
-      if (close) {
-        options.style.display = 'none';
-      } else {
-        options.style.display = 'block';
-      }
-    }
+  const closeOpts = () => {
+    const options = document.getElementById('optionsList') as HTMLElement;
+    options.style.display = 'none';
   };
 
   useEffect(() => {
     const iconName = document.getElementById('iconName') as HTMLInputElement;
     const options = document.getElementById('optionsList') as HTMLElement;
-    const closeOpts = () => options.style.display = 'none';
 
     window.onclick = closeOpts;
     if (iconName) {
-      if (iconName.value === '')
-        closeOpts();
+      if (iconName.value === '') closeOpts();
 
       iconName.onkeydown = e => {
-        if (e.key === 'Enter')
-          closeOpts();
+        if (e.key === 'Enter') closeOpts();
       };
 
       iconName.oninput = () => {
@@ -73,17 +79,15 @@ const Form = () => {
   }, []);
 
   const OptionsListHandle = () => {
-    const escaped = icon?.replace(/(\/|\\|\?|\*|\+|\-|\.|\||\[|\]|\(|\)|\{|\})/g, `\\$1`);
-    const list = Object.keys(iconObj)
-      .filter(e => e.match(RegExp(`^${escaped}`)));
+    const escaped = icon?.replace(/([\\\[\]{(.+*?)}|/-])/g, `\\$1`);
+    const list = Object.keys(iconObj).filter(e => e.match(RegExp(`^${escaped}`)));
 
-    if (doc) {  
+    if (doc) {
       if (list.length === 0) {
-        optionsList(true);
+        closeOpts();
         return '';
-      }
-      else if (list.length === 1 && icon === list[0]) {
-        optionsList(true);
+      } else if (list.length === 1 && icon === list[0]) {
+        closeOpts();
         return '';
       } else {
         return list.map((e, i) => 
@@ -94,7 +98,7 @@ const Form = () => {
               const iconName = document.getElementById('iconName') as HTMLInputElement;
               iconName.value = e;
               setIcon(e);
-              optionsList(true);
+              closeOpts();
             }}>
               <div className={ styles.optionsItem }>{ e }</div>
           </div>
@@ -104,25 +108,20 @@ const Form = () => {
   };
 
   useEffect(() => {
-    if (icon && iconObj[icon])
-      setColor(iconObj[icon].color.replace(/#/g, ''));
+    if (icon && iconObj[icon]) setColor(unsharp(iconObj[icon].color));
   }, [icon, iconObj]);
 
   useEffect(() => {
     if (icon && iconObj[icon]) {
       const colorElem = document.getElementById('color') as HTMLInputElement;
-      colorElem.oninput = () =>  setColor(colorElem.value.replace(/#/g, ''));
+      colorElem.oninput = () => setColor(unsharp(colorElem.value));
 
       const alphaElem = document.getElementById('alpha') as HTMLInputElement;
-        alphaElem.oninput = () => {
-          const hex = Math.round((parseInt(alphaElem.value ?? '0') * 255) / 100);
-          setAlphaHex(
-            hex < 16 ?
-                `0${hex.toString(16).toUpperCase()}`
-              : hex.toString(16).toUpperCase()
-          );
-          setAlpha(alphaElem.value);
-        };
+      alphaElem.oninput = () => {
+        const hex = Math.round((parseInt(alphaElem.value ?? '0') * 255) / 100);
+        setAlphaHex((hex < 16 ? `0${hex.toString(16)}` : hex.toString(16)).toUpperCase());
+        setAlpha(alphaElem.value);
+      };
 
       const sizeElem = document.getElementById('size') as HTMLInputElement;
       sizeElem.oninput = () => setSize(+sizeElem.value);
@@ -139,14 +138,7 @@ const Form = () => {
         }, .8e3);
       };
     }
-  }, [
-    icon,
-    iconObj,
-    color,
-    alphaHex,
-    size,
-    copyBtn
-  ]);
+  }, [icon, iconObj, color, alphaHex, size, copyBtn]);
 
   const Preview = () => 
     <Image
@@ -154,13 +146,11 @@ const Form = () => {
       alt='icon'
       width={100}
       height={100}/>;
-  
-  const reqColor = (c: string) => c.replace(/#/g, '');
 
   const defaultSrc = () => `https://deviconapi.vercel.app/${ icon && iconObj[icon] ? icon : '' }${
     `?${ [
       (icon && iconObj[icon] && version) && `version=${version}`,
-      (icon && iconObj[icon] && color) && `color=${reqColor(color)}${alphaHex ?? 'ff'}`,
+      (icon && iconObj[icon] && color) && `color=${unsharp(color)}${alphaHex ?? 'ff'}`,
       (icon && iconObj[icon] && size) && `size=${size}`,
     ].filter(e => e).join('&') }`
   }`;
@@ -171,7 +161,7 @@ const Form = () => {
         <section className={ styles.inputWrapper }>
           <label
             className={ styles.label }
-            htmlFor="iconName">Icon name</label>
+            htmlFor="iconName">{ t.iconName }</label>
           <input
             id="iconName"
             className={ styles.input }
@@ -219,7 +209,9 @@ const Form = () => {
             id="previewBg"
             className={ styles.imageWrapper }
             style={ previewBgContrastColor(iconObj[icon].color) }>
-            <section className={ styles.previewLabel }>Preview</section>
+            <section className={ styles.previewLabel }>
+              { t.preview }
+            </section>
             <Preview/>
           </section> : ''
         }
@@ -229,7 +221,7 @@ const Form = () => {
           <section className={ styles.inputWrapper }>
             <label
               className={ styles.label }
-              htmlFor="alpha">Alpha</label>
+              htmlFor="alpha">{ t.alpha }</label>
             <section className={ styles.inputRangeWrapper }>
               <input
                 id="alpha"
@@ -248,7 +240,7 @@ const Form = () => {
           <section className={ styles.inputWrapper }>
             <label
               className={ styles.label }
-              htmlFor="size">Size</label>
+              htmlFor="size">{ t.size }</label>
             <section className={ styles.inputRangeWrapper }>
               <input
                 id="size"
@@ -267,7 +259,7 @@ const Form = () => {
       {
         icon && iconObj[icon] ?
         <section className={ styles.pageBlock }>
-          <section>Output options</section>
+          <section>{ t.outputOptions }</section>
           <section className={ styles.outputOpts }>
             <div onClick={() => {
                 setOuts(1);
@@ -286,7 +278,7 @@ const Form = () => {
                 setColor(bwContrastColor(iconObj[icon].color));
               }} style={{ position: 'relative' }}>
               <div className={ styles.themeMask }></div>
-              <HighBox>Auto themed GitHub Markdown</HighBox>
+              <HighBox>{ t.autoTGMD }</HighBox>
             </div>
             <div onClick={() => {
                 setOuts(4);
@@ -350,7 +342,7 @@ const Form = () => {
             { 
               copyBtn ?
                 <div className={ styles.copyMsg }>
-                  Copied!
+                  { t.copied }
                 </div> : '' 
             }
           </section>
@@ -358,6 +350,4 @@ const Form = () => {
       }
     </section>
   );
-};
-
-export default Form;
+}

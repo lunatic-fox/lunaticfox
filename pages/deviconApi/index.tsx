@@ -1,28 +1,24 @@
 /**
  @author Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
- @copyright Josélio Júnior (Lunatic Fox) - 2022
+ @copyright Josélio Júnior (Lunatic Fox) - 2023
  @license MIT
 *//**/
 
 import Page from '../../components/Page';
 import Form from './Form';
-import useTranslation from '../../hooks/useTranslation';
-import dataKeys from '../../services/dataKeys';
 
-const DPage = () => {
-  const t = useTranslation(dataKeys.dt3, { title: '' });
-
+export default function DPage() {
+  const title = 'Devicon API - Interface';
+  
   return (
     <Page
       metatags={{
-        title: 'Devicon API - Interface',
+        title: title,
         description: 'An derivative API project to serve Devicon plain icons in different colors and sizes.',
         urlEndPoint: 'deviconApi'
       }}
-      pageTitle={ t.title }>
+      pageTitle={ title }>
       <Form/>
     </Page>
   );
-};
-
-export default DPage;
+}
