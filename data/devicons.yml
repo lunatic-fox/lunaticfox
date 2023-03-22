@@ -68,7 +68,7 @@ markdown: original
 matlab:
 maven pom: maven
 nim: original
-npm config: npm
+npm config: [npm, original-wordmark]
 nginx: original
 numpy: original
 objective-c: objectivec
@@ -90,7 +90,7 @@ rust:
 sass: original
 scala:
 solidity:
-stata: original
+stata: original-wordmark
 stylus: original
 svelte:
 swift:
