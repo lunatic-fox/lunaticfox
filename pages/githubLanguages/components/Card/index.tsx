@@ -4,7 +4,6 @@
  @license MIT
 *//**/
 
-import parse from 'html-react-parser';
 import kolorz from 'kolorz';
 import styles from './index.module.css';
 import { useState } from 'react';
@@ -72,9 +71,21 @@ const Card = ({
     background: color ? gContrast : '#7776'
   };
 
-  let foundIcon = '';
-  if (icon && langKey)
-    foundIcon = icon[langKey];
+  let foundIcon;
+  if (icon && langKey) {
+    foundIcon = icon[langKey] === null ? langKey
+      : typeof icon[langKey] === 'undefined' ? null
+      : icon[langKey];
+
+    if (foundIcon) {
+      if (typeof foundIcon === 'object') {
+        langKey = foundIcon[0];
+        foundIcon = foundIcon[1];
+      }
+      const version = foundIcon.match(/(original|plain|line)(-wordmark)?/);
+      foundIcon = version ? `${langKey}-${version.input}` : `${foundIcon}-plain`;
+    }
+  }
   
   const openedCard = (
     <article
@@ -82,10 +93,8 @@ const Card = ({
       style={ langStyle }>
 
       {
-        foundIcon ? 
-          parse(`<div style="margin-bottom: 10px; width: 150px;">${
-            icon[langKey].replace(/""/gm, `"${color ? gContrast : '#777a'}"`)
-          }</div>`)
+        foundIcon ?
+          <div className={`${styles.Devicon} devicon-${foundIcon}`}></div>
           : ''
       }
 
@@ -142,15 +151,19 @@ const Card = ({
     <section
       onClick={ () => setOpenCard(!openCard) }
       className={ openCard ? `${styles.langWrapper} ${styles.langWrapperOn}` : styles.langWrapper }>
-
-      <article 
+        <article 
         className={ styles.lang }
         style={ langStyle }>
         <section className={ styles.copySection }>
-          <section>
-            <section className={ styles.title }>{ name }</section>
-            <p>{ t.type ? t.type[type] ?? type : type }</p>
-          </section>
+            {
+              foundIcon ?
+                <div className={`${styles.Devicon} devicon-${foundIcon}`}></div>
+                : ''
+            }
+            <section>
+              <section className={ styles.title }>{ name }</section>
+              <p>{ t.type ? t.type[type] ?? type : type }</p>
+            </section>
         </section>
       </article>
 
