@@ -2,6 +2,16 @@
 # Source: https://devicon.dev/
 # Revised and edited by: Josélio Júnior (Lunatic Fox) <joseliojrx25@gmail.com>
 
+# external icons
+mermaid:
+moonscript:
+motorola 68k assembly: motorola
+pug:
+svg:
+wren:
+
+
+# devicons
 apacheconf: apache
 apl:
 astro:
